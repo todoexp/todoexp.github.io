@@ -85,12 +85,10 @@
             alt="add new journal entry"
             id="journal-icon"
           />
-          <button
-            type="button"
-            id="add-new-journal"
-            disabled
-            onclick="addNewJournal()"
-          >
+          <!--           <button type="button" id="add-new-journal" onclick="addNewJournal()">
+            Create Journal
+          </button> -->
+          <button type="button" id="add-new-journal" disabled>
             Create Journal
           </button>
         </div>
@@ -103,7 +101,6 @@
     <script>
       function addNewJournal() {
         document.getElementById("add-new-journal").disabled = true;
-        const E = window.wangEditor;
         let journalDiv = document.createElement("div");
         journalDiv.id = "myTextArea";
         document.querySelector(".journal-section").append(journalDiv);
