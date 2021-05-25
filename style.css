@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-  width: 15%;
+  width: 20%;
   height: 100vh;
   border-right: 1.5px solid #dfdfdf;
 }
@@ -152,7 +152,7 @@ body {
 .tasks-section {
   margin-top: 0px;
   margin-left: 0px;
-  width: 45%;
+  width: 50%;
 }
 
 .newInput {
@@ -294,7 +294,7 @@ button {
 }
 
 .journal-section {
-  width: 40%;
+  width: 30%;
 }
 
 .journal-container {
