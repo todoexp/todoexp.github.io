@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-  width: 15%;
+  width: 20%;
   height: 100vh;
   border-right: 1.5px solid #dfdfdf;
 }
@@ -54,7 +54,7 @@ body {
 .weather-container {
   margin-left: 35px;
   margin-right: 10px;
-  margin-top: 80px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +103,7 @@ body {
 .covid-data {
   margin-left: 35px;
   margin-right: 10px;
-  margin-top: 80px;
+  margin-top: 50px;
   font-size: 12px;
   color: dimgray;
 }
@@ -294,7 +294,7 @@ button {
 }
 
 .journal-section {
-  width: 40%;
+  width: 35%;
 }
 
 .journal-container {
