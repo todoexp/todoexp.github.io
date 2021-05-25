@@ -37,7 +37,6 @@ window.onload = function () {
                     return response.json();
                 })
                 .then((data) => {
-                    console.log(data);
                     const { temp } = data.main;
                     const place = data.name;
                     const { description, icon } = data.weather[0];
@@ -71,7 +70,6 @@ window.onload = function () {
             return response.json();
         })
         .then((data) => {
-            console.log(data);
             const { date, cases, deaths, avaccine, cumulative_cvaccine } =
                 data.summary[0];
 
