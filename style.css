@@ -347,19 +347,19 @@ button {
     border-bottom: 1.5px solid #dfdfdf;
 }
 
-.art-image,
+.art-image {
+    margin-bottom: 20px;
+}
+
 .art-title {
-    margin-bottom: 5px;
+    color: dimgray;
+    margin-bottom: 10px;
 }
 
 .art {
     display: block;
     text-align: center;
-    margin-top: 10px;
-}
-
-.art-title {
-    color: dimgray;
+    margin-top: 20px;
 }
 
 #art-link {
