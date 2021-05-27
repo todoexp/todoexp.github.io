@@ -26,7 +26,7 @@ let artLink = document.querySelector("#art-link");
 
 async function fetchArtwork() {
     const artworkIds = new Array();
-    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=365`;
+    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=100`;
 
     let response = await fetch(artworksData);
     const artworks = await response.json();
