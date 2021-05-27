@@ -368,7 +368,7 @@ button {
 }
 
 @media (max-width: 1100px) {
-    .journal-section {
+    .art-section {
         display: none;
     }
 
@@ -383,7 +383,7 @@ button {
 
 @media (max-width: 800px) {
     .navbar,
-    .journal-section {
+    .art-section {
         display: none;
     }
 
