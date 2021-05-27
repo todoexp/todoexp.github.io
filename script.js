@@ -49,8 +49,8 @@ async function fetchArtwork() {
         console.log(image.height);
         console.log(image.width);
 
-        let limitH = 680;
-        let limitW = 680;
+        let limitH = 500;
+        let limitW = 500;
 
         let newW = 0,
             newH = 0;
