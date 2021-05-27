@@ -22,7 +22,7 @@ const cumulativeCvaccine = document.querySelector(".cumulative_cvaccine");
 // art data
 const artImage = document.querySelector(".art-image");
 let artTitle = document.querySelector(".art-title");
-let artLink = document.querySelector(".art-link");
+let artLink = document.querySelector("#art-link");
 
 async function fetchArtData() {
     let fetchSuccess = false;
@@ -42,8 +42,10 @@ async function fetchArtData() {
 
                 if (data.primaryImageSmall != "") {
                     artImage.src = `${data.primaryImageSmall}`;
-                    artTitle.textContent = `${data.title}`;
+                    artTitle.textContent = `Title: ${data.title}`;
                     artLink.href = `${data.objectURL}`;
+                    artLink.textContent =
+                        "Link to The Metropolitan Museum of Art";
                     fetchSuccess = true;
                 }
             });
