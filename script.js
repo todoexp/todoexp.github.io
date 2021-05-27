@@ -26,7 +26,7 @@ let artLink = document.querySelector("#art-link");
 
 async function fetchArtwork() {
     const artworkIds = new Array();
-    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=100`;
+    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=365`;
 
     let response = await fetch(artworksData);
     const artworks = await response.json();
@@ -49,8 +49,8 @@ async function fetchArtwork() {
         console.log(image.height);
         console.log(image.width);
 
-        let limitH = 500;
-        let limitW = 500;
+        let limitH = 680;
+        let limitW = 680;
 
         let newW = 0,
             newH = 0;
