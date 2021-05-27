@@ -33,27 +33,21 @@ async function fetchArtData() {
         console.log(randomArtId);
         const artData = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArtId}`;
 
-        let response;
-        try {
-            response = await fetch(artData);
-        } catch {
+        const response = await fetch(artData);
+        if (response.status >= 200 && response.status <= 299) {
+            const data = await response.json();
+            console.log(data);
+
+            if (data.primaryImageSmall != "") {
+                artImage.src = `${data.primaryImageSmall}`;
+                artTitle.textContent = `Title: ${data.title}`;
+                artLink.href = `${data.objectURL}`;
+                artLink.textContent = "Link to The Metropolitan Museum of Art";
+                fetchSuccess = true;
+            }
+        } else {
             console.log("The URL is unavailable.");
-        }
-
-        if (!response.ok) continue;
-        else {
-            await response.json().then((data) => {
-                console.log(data);
-
-                if (data.primaryImageSmall != "") {
-                    artImage.src = `${data.primaryImageSmall}`;
-                    artTitle.textContent = `Title: ${data.title}`;
-                    artLink.href = `${data.objectURL}`;
-                    artLink.textContent =
-                        "Link to The Metropolitan Museum of Art";
-                    fetchSuccess = true;
-                }
-            });
+            continue;
         }
     }
 }
