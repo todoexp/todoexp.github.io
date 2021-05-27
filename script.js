@@ -33,12 +33,17 @@ async function fetchArtData() {
         console.log(randomArtId);
         const artData = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArtId}`;
 
-        const response = await fetch(artData);
+        let response;
+        try {
+            response = await fetch(artData);
+        } catch {
+            console.log("The URL is unavailable.");
+        }
+
         if (!response.ok) continue;
         else {
             await response.json().then((data) => {
                 console.log(data);
-                console.log(data.objectURL);
 
                 if (data.primaryImageSmall != "") {
                     artImage.src = `${data.primaryImageSmall}`;
