@@ -19,6 +19,38 @@ const death = document.querySelector(".death");
 const aVaccine = document.querySelector(".avaccine");
 const cumulativeCvaccine = document.querySelector(".cumulative_cvaccine");
 
+// art data
+const artImage = document.querySelector(".art-image");
+let artTitle = document.querySelector(".art-title");
+let artLink = document.querySelector(".art-link");
+
+async function fetchArtData() {
+    let fetchSuccess = false;
+    let maximumFetchTries = 20;
+
+    for (let i = 1; i <= maximumFetchTries && !fetchSuccess; i++) {
+        const randomArtId = Math.trunc(Math.random() * 10000);
+        console.log(randomArtId);
+        const artData = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArtId}`;
+
+        const response = await fetch(artData);
+        if (!response.ok) continue;
+        else {
+            await response.json().then((data) => {
+                console.log(data);
+                console.log(data.objectURL);
+
+                if (data.primaryImageSmall != "") {
+                    artImage.src = `${data.primaryImageSmall}`;
+                    artTitle.textContent = `${data.title}`;
+                    artLink.href = `${data.objectURL}`;
+                    fetchSuccess = true;
+                }
+            });
+        }
+    }
+}
+
 window.onload = function () {
     const today = new Date();
     document.getElementById("itemDueDate").valueAsDate = today;
@@ -82,6 +114,8 @@ window.onload = function () {
             aVaccine.textContent = `Vaccine administered: ${avaccine}`;
             cumulativeCvaccine.textContent = `Cumulative fully vaccinated: ${cumulative_cvaccine}`;
         });
+
+    fetchArtData();
 };
 
 function checkboxEventListener(idNumber) {

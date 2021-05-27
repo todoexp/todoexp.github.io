@@ -1,116 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
-    <title>To Do List</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="flexbox-container">
-      <div class="navbar">
-        <div class="profile-info">
-          <img
-            src="/images/male avatar.png"
-            alt="profile-picture"
-            width="50,"
-            height="50"
-          />
-          <p class="Username">Stanley</p>
-        </div>
-        <div class="left-nav today">
-          <img src="images/calendar.svg" alt="Icon" class="today-icon" />
-          <p>Today</p>
-        </div>
-        <div class="left-nav all-tasks">
-          <img
-            src="images/inbox.svg"
-            alt="Collection"
-            class="item-collection-icon"
-          />
-          <p>All To-Do</p>
-        </div>
-        <div class="weather-container">
-          <img src="" alt="" srcset="" id="weather-icon" />
-          <div id="location">Unable to Fetch Location</div>
-          <div class="desc">No Information Available.</div>
-          <div class="temp">
-            <div class="c">Error</div>
-            <div class="circle"></div>
-            <div class="f">Error</div>
-          </div>
-          <div class="info">
-            <p>
-              Sunrise:
-              <span class="sunrise">No Information Available</span>
-            </p>
-            <p>
-              Sunset:
-              <span class="sunset">No Information Available</span>
-            </p>
-          </div>
-        </div>
-        <div class="covid-data">
-          <div class="province">Covid-19 Data in Quebec</div>
-          <div class="mostRecentDate"></div>
-          <div class="newCases"></div>
-          <div class="death"></div>
-          <div class="avaccine"></div>
-          <div class="cumulative_cvaccine"></div>
-        </div>
-      </div>
-      <div class="tasks-section">
-        <div class="newInput">
-          <input
-            type="text"
-            id="newItem"
-            name="newItem"
-            maxlength="40"
-            size="40"
-            required
-          />
-          <input type="date" id="itemDueDate" name="itemDueDate" />
-        </div>
-        <div id="all-to-do-items"></div>
-      </div>
-      <section class="journal-section">
-        <div class="journal-container">
-          <img
-            src="images/add-file.svg"
-            alt="add new journal entry"
-            id="journal-icon"
-          />
-          <!--           <button type="button" id="add-new-journal" onclick="addNewJournal()">
-            Create Journal
-          </button> -->
-          <button type="button" id="add-new-journal" disabled>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+        />
+        <title>To Do List</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="flexbox-container">
+            <div class="navbar">
+                <div class="profile-info">
+                    <img
+                        src="/images/male avatar.png"
+                        alt="profile-picture"
+                        width="50,"
+                        height="50"
+                    />
+                    <p class="Username">Stanley</p>
+                </div>
+                <div class="left-nav today">
+                    <img
+                        src="images/calendar.svg"
+                        alt="Icon"
+                        class="today-icon"
+                    />
+                    <p>Today</p>
+                </div>
+                <div class="left-nav all-tasks">
+                    <img
+                        src="images/inbox.svg"
+                        alt="Collection"
+                        class="item-collection-icon"
+                    />
+                    <p>All To-Do</p>
+                </div>
+                <div class="weather-container">
+                    <img src="" alt="" srcset="" id="weather-icon" />
+                    <div id="location">Unable to Fetch Location</div>
+                    <div class="desc">No Information Available.</div>
+                    <div class="temp">
+                        <div class="c">Error</div>
+                        <div class="circle"></div>
+                        <div class="f">Error</div>
+                    </div>
+                    <div class="info">
+                        <p>
+                            Sunrise:
+                            <span class="sunrise"
+                                >No Information Available</span
+                            >
+                        </p>
+                        <p>
+                            Sunset:
+                            <span class="sunset">No Information Available</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="covid-data">
+                    <div class="province">Covid-19 Data in Quebec</div>
+                    <div class="mostRecentDate"></div>
+                    <div class="newCases"></div>
+                    <div class="death"></div>
+                    <div class="avaccine"></div>
+                    <div class="cumulative_cvaccine"></div>
+                </div>
+            </div>
+            <div class="tasks-section">
+                <div class="newInput">
+                    <input
+                        type="text"
+                        id="newItem"
+                        name="newItem"
+                        maxlength="40"
+                        size="40"
+                        required
+                    />
+                    <input type="date" id="itemDueDate" name="itemDueDate" />
+                </div>
+                <div id="all-to-do-items"></div>
+            </div>
+            <!-- 
+            <section class="journal-section">
+                <div class="journal-container">
+                    <img
+                        src="images/add-file.svg"
+                        alt="add new journal entry"
+                        id="journal-icon"
+                    />
+                    <button type="button" id="add-new-journal" onclick="addNewJournal()">
             Create Journal
           </button>
+                    <button type="button" id="add-new-journal" disabled>
+                        Create Journal
+                    </button>
+                </div>
+            </section> -->
+            <section class="art-section">
+                <div class="art-header">Daily Dose of Art</div>
+                <div class="art">
+                    <img src="" alt="" class="art-image" />
+                    <div class="art-title"></div>
+                    <div class="art-link">
+                        <a href="" target="_blank">More information</a>
+                    </div>
+                </div>
+                <div class="art-fetch-fail"></div>
+            </section>
         </div>
-      </section>
-    </div>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/balloon/ckeditor.js"></script>
-    <script>
-      function addNewJournal() {
-        document.getElementById("add-new-journal").disabled = true;
-        let journalDiv = document.createElement("div");
-        journalDiv.id = "myTextArea";
-        document.querySelector(".journal-section").append(journalDiv);
+        <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/balloon/ckeditor.js"></script>
+        <script>
+            function addNewJournal() {
+                document.getElementById("add-new-journal").disabled = true;
+                let journalDiv = document.createElement("div");
+                journalDiv.id = "myTextArea";
+                document.querySelector(".journal-section").append(journalDiv);
 
-        BalloonEditor.create(document.querySelector("#myTextArea")).catch(
-          (error) => {
-            console.error(error);
-          }
-        );
-      }
-    </script>
-  </body>
+                BalloonEditor.create(
+                    document.querySelector("#myTextArea")
+                ).catch((error) => {
+                    console.error(error);
+                });
+            }
+        </script>
+    </body>
 </html>
