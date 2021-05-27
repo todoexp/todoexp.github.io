@@ -24,32 +24,56 @@ const artImage = document.querySelector(".art-image");
 let artTitle = document.querySelector(".art-title");
 let artLink = document.querySelector("#art-link");
 
-async function fetchArtData() {
-    let fetchSuccess = false;
-    let maximumFetchTries = 20;
+async function fetchArtwork() {
+    const artworkIds = new Array();
+    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=100`;
 
-    for (let i = 1; i <= maximumFetchTries && !fetchSuccess; i++) {
-        const randomArtId = Math.trunc(Math.random() * 10000);
-        console.log(randomArtId);
-        const artData = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArtId}`;
-
-        const response = await fetch(artData);
-        if (response.status >= 200 && response.status <= 299) {
-            const data = await response.json();
-            console.log(data);
-
-            if (data.primaryImageSmall != "") {
-                artImage.src = `${data.primaryImageSmall}`;
-                artTitle.textContent = `Title: ${data.title}`;
-                artLink.href = `${data.objectURL}`;
-                artLink.textContent = "Link to The Metropolitan Museum of Art";
-                fetchSuccess = true;
-            }
-        } else {
-            console.log("The URL is unavailable.");
-            continue;
-        }
+    let response = await fetch(artworksData);
+    const artworks = await response.json();
+    console.log(artworks);
+    for (let i = 0; i < artworks.data.length; i++) {
+        artworkIds.push(artworks.data[i].id);
     }
+    console.log(artworkIds);
+
+    const randomId = Math.trunc(Math.random() * artworkIds.length);
+    console.log(randomId);
+
+    artImage.src = artworks.data[randomId].images.web.url;
+    artTitle.textContent = artworks.data[randomId].title;
+    artLink.href = artworks.data[randomId].url;
+    artLink.textContent = "Link to The Cleveland Museum of Art";
+
+    let image = document.querySelector(".art-image");
+    image.onload = function () {
+        console.log(image.height);
+        console.log(image.width);
+
+        let limitH = 500;
+        let limitW = 500;
+
+        let newW = 0,
+            newH = 0;
+
+        if (image.width > limitW) {
+            newW = limitW;
+            newH = parseInt((image.height * newW) / image.width);
+
+            if (newH > limitH) {
+                newH = limitH;
+                newW = parseInt((image.width * newH) / image.height);
+            }
+            image.width = newW;
+            image.height = newH;
+        } else if (image.height > limitH) {
+            newH = limitH;
+            newW = parseInt((image.width * newH) / image.height);
+            image.width = newW;
+            image.height = newH;
+        }
+        console.log(image.height);
+        console.log(image.width);
+    };
 }
 
 window.onload = function () {
@@ -116,7 +140,7 @@ window.onload = function () {
             cumulativeCvaccine.textContent = `Cumulative fully vaccinated: ${cumulative_cvaccine}`;
         });
 
-    fetchArtData();
+    fetchArtwork();
 };
 
 function checkboxEventListener(idNumber) {
