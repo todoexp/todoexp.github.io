@@ -16,7 +16,7 @@
             <div class="navbar">
                 <div class="profile-info">
                     <img
-                        src="/images/male avatar.png"
+                        src="images/male avatar.png"
                         alt="profile-picture"
                         width="50,"
                         height="50"
@@ -84,22 +84,7 @@
                 </div>
                 <div id="all-to-do-items"></div>
             </div>
-            <!-- 
-            <section class="journal-section">
-                <div class="journal-container">
-                    <img
-                        src="images/add-file.svg"
-                        alt="add new journal entry"
-                        id="journal-icon"
-                    />
-                    <button type="button" id="add-new-journal" onclick="addNewJournal()">
-            Create Journal
-          </button>
-                    <button type="button" id="add-new-journal" disabled>
-                        Create Journal
-                    </button>
-                </div>
-            </section> -->
+
             <section class="art-section">
                 <div class="art-header">Daily Dose of Art</div>
                 <div class="art">
@@ -114,21 +99,5 @@
         </div>
 
         <script type="module" src="./styles/script.js"></script>
-
-        <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/balloon/ckeditor.js"></script>
-        <script>
-            function addNewJournal() {
-                document.getElementById("add-new-journal").disabled = true;
-                let journalDiv = document.createElement("div");
-                journalDiv.id = "myTextArea";
-                document.querySelector(".journal-section").append(journalDiv);
-
-                BalloonEditor.create(
-                    document.querySelector("#myTextArea")
-                ).catch((error) => {
-                    console.error(error);
-                });
-            }
-        </script>
     </body>
 </html>
