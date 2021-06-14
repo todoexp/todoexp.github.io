@@ -85,22 +85,25 @@ async function fetchArtwork() {
     let artLink = document.querySelector("#art-link");
 
     const artworkIds = new Array();
-    const artworksData = `https://openaccess-api.clevelandart.org/api/artworks/?has_image=1&limit=365`;
+    const url =
+        "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=painting";
 
-    let response = await fetch(artworksData);
+    let response = await fetch(url);
     const artworks = await response.json();
-    for (let i = 0; i < artworks.data.length; i++) {
-        artworkIds.push(artworks.data[i].id);
-    }
+    let objectIds = artworks.objectIDs;
 
-    const randomId = Math.trunc(Math.random() * artworkIds.length);
-    console.log(randomId);
+    const randomId = Math.trunc(Math.random() * objectIds.length);
+    const artworkId = objectIds[randomId];
 
-    let artworkData = artworks.data[randomId];
-    artImage.src = artworkData.images.web.url;
-    artTitle.textContent = artworkData.title;
-    artLink.href = artworkData.url;
-    artLink.textContent = "Link to The Cleveland Museum of Art";
+    const artworkData = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${artworkId}`;
+    let artworkRes = await fetch(artworkData);
+    let artworkJson = await artworkRes.json();
+    console.log(artworkJson);
+
+    artImage.src = artworkJson.primaryImageSmall;
+    artTitle.textContent = artworkJson.title;
+    artLink.href = artworkJson.objectURL;
+    artLink.textContent = "Link to The Metropolitan Museum of Art";
 
     let image = document.querySelector(".art-image");
     image.onload = function () {
